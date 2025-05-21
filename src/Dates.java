@@ -1,6 +1,7 @@
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -12,30 +13,22 @@ public class Dates {
         DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
         LocalDate d01 = LocalDate.now();
-        LocalDateTime d02 = LocalDateTime.now();
-        Instant d03 = Instant.now();
-
-        LocalDate dp01 = LocalDate.parse("2025-10-15");
-        LocalDateTime dp02 = LocalDateTime.parse("2025-10-15T10:15:30");
-        Instant dp03 = Instant.parse("2025-10-15T01:15:30Z");
-
-        LocalDate dpf01 = LocalDate.parse("15/10/2005", fmt1);
-        LocalDateTime dpf02 = LocalDateTime.parse("15/10/2005 10:15", fmt2);
+        LocalDateTime d02 = LocalDateTime.parse("2025-01-01T00:00");
+        Instant d04 = Instant.parse("2019-01-01T00:00:00.00Z");
 
 
-        System.out.println("d01 = " + d01);
-        System.out.println("d02 = " + d02);
-        System.out.println("d03 = " + d03);
+        LocalDate i01 = LocalDate.ofInstant(d04, ZoneId.systemDefault());
+        LocalDate i02 = LocalDate.ofInstant(d04, ZoneId.of("Portugal"));
+        LocalDateTime i03 = LocalDateTime.ofInstant(d04, ZoneId.systemDefault());
+        LocalDateTime i04 = LocalDateTime.ofInstant(d04, ZoneId.of("Portugal"));
+        System.out.println(i01);
+        System.out.println(i02);
+        System.out.println(i03);
+        System.out.println(i04);
 
-        System.out.println();
-
-        System.out.println("dp1 = " + dp01);
-        System.out.println("dp2 = " + dp02);
-
-        System.out.println();
-
-        System.out.println("dpf1 = " + dpf01.toString());
-        System.out.println("dpf2 = " + dpf02.toString());
+        System.out.println("day: " + d02.getDayOfMonth());
+        System.out.println("month: " + d02.getMonth());
+        System.out.println("year: " + d02.getYear());
 
 
 
